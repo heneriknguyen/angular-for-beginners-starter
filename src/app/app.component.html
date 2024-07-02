@@ -1,0 +1,9 @@
+<h1>Data from API:</h1>
+
+<ul>
+  <li *ngFor="let item of data">
+    Name: {{ item.name }} | Age: {{ item.age }} | City: {{ item.city }}
+  </li>
+</ul>
+
+<p *ngIf="!data">Loading data...</p>

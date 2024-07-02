@@ -1,0 +1,19 @@
+<div class="table-container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th *ngFor="let column of columns">{{ column.Header }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of filteredData" (dblclick)="handleDoubleClick(row)">
+          <td *ngFor="let column of columns">{{ row[column.accessor] }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div class="popup" *ngIf="showPopup">
+    <h2>Row Details</h2>
+    <p>Name: {{ selectedR
+  

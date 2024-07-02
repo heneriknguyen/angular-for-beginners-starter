@@ -1,0 +1,7 @@
+<div class="bar">
+    <ul>
+      <li>Filter: <input type="search" placeholder="Search Here" [(ngModel)]="filter" (input)="handleFilterChange($event.target.value)" /></li>
+      <li><button (click)="handleClick()">Refresh</button></li>
+    </ul>
+  </div>
+  

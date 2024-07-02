@@ -1,71 +1,30 @@
+/**
+ * System configuration for Angular samples
+ * Adjust as necessary for your application needs.
+ */
 (function (global) {
-
-    //map tells the System loader where to look for things
-    var map = {
-
-        '@angular': 'node_modules/@angular', // sufficient if we didn't pin the version
-        '@angular/router': 'node_modules/@angular/router' ,
-        '@angular/forms': 'node_modules/@angular/forms',
-        'angular2-in-memory-web-api': 'https://npmcdn.com/angular2-in-memory-web-api', // get latest
-        'rxjs': 'https://npmcdn.com/rxjs@5.0.0-beta.6',
-        'ts': 'https://npmcdn.com/plugin-typescript@4.0.10/lib/plugin.js',
-        'typescript': 'https://npmcdn.com/typescript@1.9.0-dev.20160409/lib/typescript.js',
-    };
-
-    //packages tells the System loader how to load when no filename and/or no extension
-    var packages = {
-        'rxjs': {defaultExtension: 'js'},
-        'angular2-in-memory-web-api': {main: 'index.js', defaultExtension: 'js'},
-    };
-
-    var ngPackageNames = [
-        'common',
-        'compiler',
-        'core',
-        'http',
-        'platform-browser',
-        'platform-browser-dynamic',
-        'router-deprecated',
-        'upgrade',
-    ];
-
-    // Add map entries for each angular package
-    ngPackageNames.forEach(function (pkgName) {
-        map['@angular/' + pkgName] = 'node_modules/@angular/' + pkgName;
-    });
-
-    // Add package entries for angular packages
-    ngPackageNames.forEach(function (pkgName) {
-
-        // Bundled (~40 requests):
-        packages['@angular/' + pkgName] = {main: '/bundles/' + pkgName + '.umd.js', defaultExtension: 'js'};
-
-        // Individual files (~300 requests):
-        //packages['@angular/'+pkgName] = { main: 'index.js', defaultExtension: 'js' };
-    });
-
-    // No umd for router yet
-    packages['@angular/router'] = {main: 'index.js', defaultExtension: 'js'};
-
-    // Forms not on rc yet
-    packages['@angular/forms'] = {main: 'index.js', defaultExtension: 'js'};
-
-    var config = {
-        // DEMO ONLY! REAL CODE SHOULD NOT TRANSPILE IN THE BROWSER
-        transpiler: 'ts',
-        typescriptOptions: {
-            tsconfig: true
+    System.config({
+      paths: {
+        'npm:': 'node_modules/'
+      },
+      map: {
+        app: 'app',
+        '@angular/core': 'npm:@angular/core/bundles/core.umd.js',
+        '@angular/common': 'npm:@angular/common/bundles/common.umd.js',
+        '@angular/compiler': 'npm:@angular/compiler/bundles/compiler.umd.js',
+        '@angular/platform-browser': 'npm:@angular/platform-browser/bundles/platform-browser.umd.js',
+        '@angular/platform-browser-dynamic': 'npm:@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',
+        'rxjs': 'npm:rxjs'
+      },
+      packages: {
+        app: {
+          main: './main.js', // Adjust if your entry file is different
+          defaultExtension: 'js'
         },
-        meta: {
-            'typescript': {
-                "exports": "ts"
-            }
-        },
-        map: map,
-        packages: packages
-    };
-
-    document.SYSTEMJS_CONFIG = config;
-
-})(this);
-
+        rxjs: {
+          defaultExtension: 'js'
+        }
+      }
+    });
+  })(this);
+  
